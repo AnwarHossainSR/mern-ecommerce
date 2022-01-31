@@ -19,8 +19,9 @@ exports.createProduct = async (req, res, next) => {
 
 //Get All Products
 exports.getAllProducts = async (req, res, next) => {
+  let products = await Product.find();
   res.status(200).json({
     success: true,
-    message: "all products",
+    products,
   });
 };
