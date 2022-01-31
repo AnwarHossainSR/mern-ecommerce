@@ -68,3 +68,20 @@ exports.deleteProduct = async (req, res, next) => {
     message: "Product Delete Successfully",
   });
 };
+
+// Get Product Details
+exports.getProductDetails = async (req, res, next) => {
+  const product = await Product.findById(req.params.id);
+
+  if (!product) {
+    res.status(404).json({
+      success: false,
+      message: "product not found",
+    });
+  }
+
+  res.status(200).json({
+    success: true,
+    product,
+  });
+};
