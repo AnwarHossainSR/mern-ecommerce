@@ -4,13 +4,15 @@ const {
   loginUser,
   logout,
   forgotPassword,
+  resetPassword,
 } = require("../controllers/userController");
 const { isAuthenticatedUser } = require("../middleware/auth");
 const router = express.Router();
 
 router.route("/register").post(registerUser);
 router.route("/login").post(loginUser);
-router.route("/password/forgot").post(forgotPassword);
 router.route("/logout").get(isAuthenticatedUser, logout);
+router.route("/password/forgot").post(forgotPassword);
+router.route("/password/reset/:token").put(resetPassword);
 
 module.exports = router;
