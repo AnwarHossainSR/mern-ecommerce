@@ -4,6 +4,8 @@ const {
   getSingleOrder,
   myOrders,
   getAllOrders,
+  deleteOrder,
+  updateOrder,
 } = require("../controllers/orderController");
 const router = express.Router();
 
@@ -16,5 +18,10 @@ router.route("/orders/me").get(isAuthenticatedUser, myOrders);
 router
   .route("/admin/orders")
   .get(isAuthenticatedUser, authorizeRoles("admin"), getAllOrders);
+
+router
+  .route("/admin/order/:id")
+  .put(isAuthenticatedUser, authorizeRoles("admin"), updateOrder)
+  .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteOrder);
 
 module.exports = router;
