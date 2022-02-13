@@ -10,6 +10,7 @@ const product = {
   ratings: 4.5,
 };
 const Home = () => {
+  const iterates = ["Dog", "Bird", "Cat", "Mouse", "Horse", "f", "g", "f"];
   return (
     <>
       <div className="banner">
@@ -26,7 +27,9 @@ const Home = () => {
       <h2 className="homeHeading">Featured Products</h2>
 
       <div className="container" id="container">
-        <ProductCard key={product._id} product={product} />
+        {iterates.map((item, index) => {
+          return <ProductCard key={index} product={product} />;
+        })}
       </div>
     </>
   );
