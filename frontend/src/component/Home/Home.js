@@ -1,7 +1,14 @@
 import React from "react";
 import { CgMouse } from "react-icons/cg";
 import "./Home.css";
-
+import ProductCard from "./ProductCard";
+const product = {
+  name: "Blue Shirt",
+  images: [{ url: "https://i.ibb.co/q3mZxq0/blue-shirt.jpg" }],
+  price: "3000",
+  _id: "test_id",
+  ratings: 4.5,
+};
 const Home = () => {
   return (
     <>
@@ -19,10 +26,7 @@ const Home = () => {
       <h2 className="homeHeading">Featured Products</h2>
 
       <div className="container" id="container">
-        {/* {products &&
-    products.map((product) => (
-      <ProductCard key={product._id} product={product} />
-    ))} */}
+        <ProductCard key={product._id} product={product} />
       </div>
     </>
   );
