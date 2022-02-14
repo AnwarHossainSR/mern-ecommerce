@@ -1,38 +1,51 @@
-import React from "react";
+import React, { useEffect } from "react";
+//import { useAlert } from "react-alert";
 import { CgMouse } from "react-icons/cg";
+import { useDispatch, useSelector } from "react-redux";
+import { clearErrors, getProduct } from "../../actions/productAction";
 import MetaData from "../layout/MetaData";
 import "./Home.css";
 import ProductCard from "./ProductCard";
-const product = {
-  name: "Blue Shirt",
-  images: [{ url: "https://i.ibb.co/q3mZxq0/blue-shirt.jpg" }],
-  price: "3000",
-  _id: "test_id",
-  ratings: 4.5,
-};
 const Home = () => {
-  const iterates = ["Dog", "Bird", "Cat", "Mouse", "Horse", "f", "g", "f"];
+  // const alert = useAlert();
+  const dispatch = useDispatch();
+  const { loading, error, products } = useSelector((state) => state.products);
+  useEffect(() => {
+    if (error) {
+      //alert.error(error);
+      dispatch(clearErrors());
+    }
+    dispatch(getProduct());
+  }, [dispatch, error]);
   return (
     <>
-      <MetaData title="ECOMMERCE" />
-      <div className="banner">
-        <p>Welcome to Ecommerce</p>
-        <h1>FIND AMAZING PRODUCTS BELOW</h1>
+      {loading ? (
+        <h1>Loading..</h1>
+      ) : (
+        <>
+          <MetaData title="ECOMMERCE" />
 
-        <a href="#container">
-          <button>
-            Scroll <CgMouse />
-          </button>
-        </a>
-      </div>
+          <div className="banner">
+            <p>Welcome to Ecommerce</p>
+            <h1>FIND AMAZING PRODUCTS BELOW</h1>
 
-      <h2 className="homeHeading">Featured Products</h2>
+            <a href="#container">
+              <button>
+                Scroll <CgMouse />
+              </button>
+            </a>
+          </div>
 
-      <div className="container" id="container">
-        {iterates.map((item, index) => {
-          return <ProductCard key={index} product={product} />;
-        })}
-      </div>
+          <h2 className="homeHeading">Featured Products</h2>
+
+          <div className="container" id="container">
+            {products &&
+              products.map((product) => (
+                <ProductCard key={product._id} product={product} />
+              ))}
+          </div>
+        </>
+      )}
     </>
   );
 };
