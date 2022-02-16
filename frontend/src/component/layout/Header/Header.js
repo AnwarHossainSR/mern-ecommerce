@@ -3,6 +3,7 @@ import React from "react";
 import logo from "../../../images/logo.png";
 
 const options = {
+  burgerColor: "#BC986A",
   burgerColorHover: "#eb4034",
   logo,
   logoWidth: "20vmax",
