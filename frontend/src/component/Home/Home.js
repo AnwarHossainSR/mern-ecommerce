@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { CgMouse } from "react-icons/cg";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, getProduct } from "../../actions/productAction";
+import Loader from "../layout/Loader/Loader";
 import MetaData from "../layout/MetaData";
 import "./Home.css";
 import ProductCard from "./ProductCard";
@@ -20,7 +21,7 @@ const Home = () => {
   return (
     <>
       {loading ? (
-        <h1>Loading..</h1>
+        <Loader />
       ) : (
         <>
           <MetaData title="ECOMMERCE" />
