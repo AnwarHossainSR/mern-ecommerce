@@ -11,7 +11,7 @@ import MetaData from "../layout/MetaData";
 import "./Products.css";
 
 const categories = [
-  "Laptop",
+  "laptop",
   "Footwear",
   "Bottom",
   "Tops",
