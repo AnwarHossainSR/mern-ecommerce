@@ -7,6 +7,7 @@ import Footer from "./component/layout/Footer/Footer";
 import Header from "./component/layout/Header/Header";
 import ProductDetails from "./component/Product/ProductDetails";
 import Products from "./component/Product/Products";
+import Search from "./component/Product/Search";
 const App = () => {
   useEffect(() => {
     WebFont.load({
@@ -22,6 +23,7 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <Route exact path="/product/:id" component={ProductDetails} />
         <Route exact path="/products" component={Products} />
+        <Route exact path="/Search" component={Search} />
       </Switch>
       <Footer />
     </Router>
