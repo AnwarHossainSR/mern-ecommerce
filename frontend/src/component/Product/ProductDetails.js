@@ -16,7 +16,7 @@ import Loader from "../layout/Loader/Loader";
 import MetaData from "../layout/MetaData";
 import "./ProductDetails.css";
 //import { NEW_REVIEW_RESET } from "../../constants/productConstants";
-
+import ReviewCard from "./ReviewCard";
 const ProductDetails = ({ match }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -195,7 +195,7 @@ const ProductDetails = ({ match }) => {
             </DialogActions>
           </Dialog>
 
-          {/* {product.reviews && product.reviews[0] ? (
+          {product.reviews && product.reviews[0] ? (
             <div className="reviews">
               {product.reviews &&
                 product.reviews.map((review) => (
@@ -204,8 +204,7 @@ const ProductDetails = ({ match }) => {
             </div>
           ) : (
             <p className="noReviews">No Reviews Yet</p>
-          )} */}
-          <p className="noReviews">No Reviews Yet</p>
+          )}
         </Fragment>
       )}
     </Fragment>
