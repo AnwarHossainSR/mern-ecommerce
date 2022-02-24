@@ -59,7 +59,7 @@ const Products = ({ match }) => {
 
     dispatch(getProduct(keyword, currentPage, price, category, ratings));
   }, [dispatch, keyword, currentPage, price, category, ratings, alert, error]);
-
+  console.log(count);
   return (
     <Fragment>
       {loading ? (
@@ -114,7 +114,7 @@ const Products = ({ match }) => {
               />
             </fieldset>
           </div>
-          {resultPerPage < count && (
+          {resultPerPage < productsCount && (
             <div className="paginationBox">
               <Pagination
                 activePage={currentPage}
