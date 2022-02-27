@@ -1,26 +1,27 @@
 import React, { useEffect } from "react";
-//import { useAlert } from "react-alert";
+import { useAlert } from "react-alert";
 import { CgMouse } from "react-icons/cg";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, getProduct } from "../../actions/productAction";
+import Loader from "../layout/Loader/Loader";
 import MetaData from "../layout/MetaData";
 import "./Home.css";
 import ProductCard from "./ProductCard";
 const Home = () => {
-  // const alert = useAlert();
+   const alert = useAlert();
   const dispatch = useDispatch();
   const { loading, error, products } = useSelector((state) => state.products);
   useEffect(() => {
     if (error) {
-      //alert.error(error);
+      alert.error(error);
       dispatch(clearErrors());
     }
     dispatch(getProduct());
-  }, [dispatch, error]);
+  }, [dispatch, error,alert]);
   return (
     <>
       {loading ? (
-        <h1>Loading..</h1>
+        <Loader />
       ) : (
         <>
           <MetaData title="ECOMMERCE" />
